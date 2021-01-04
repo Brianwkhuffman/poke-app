@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function PokemonList({pokemon}) {
+export default function PokemonList({pokemon, loading}) {
     return (
         <div>
             {pokemon.map((p) => (
