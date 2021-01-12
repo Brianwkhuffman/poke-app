@@ -5,8 +5,8 @@ const LoadingComponent = () => {
    return <ReactLoading
    type={'spokes'}
    color={'black'}
-   height={'200px'}
-   width={'200px'}/>
+   height={'50px'}
+   width={'50px'}/>
 };
 
 export default LoadingComponent;

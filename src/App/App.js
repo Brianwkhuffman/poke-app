@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import PokemonList from "../components/PokemonList/PokemonList";
-import Pagination from "../components/PokemonList/Pagination";
 import styles from "./App.module.scss";
 import axios from "axios";
 import LoadingComponent from "../components/LoadingComponent/LoadingComponent";
@@ -40,16 +39,24 @@ function App() {
 
 
   return (
-    <>
-      <div class={styles.main}>
-      <PokemonList pokemon={pokemon}/>
-      </div>
-        {loading && <LoadingComponent/>}
-      <Pagination
-        gotoNextPage={nextPageUrl ? gotoNextPage : null}
-        gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
-      />
-    </>
+  <div className={styles.main}>
+    {loading ? <LoadingComponent/> : null}
+    <PokemonList pokemon={pokemon}/>
+    
+    <div className={styles.footer}>
+      <button
+      onClick={gotoPrevPage}
+      style={{visibility: prevPageUrl ? 'visible' : 'hidden'}}>
+      Prev 20
+      </button>
+      
+      <button
+      onClick={gotoNextPage}
+      style={{visibility: nextPageUrl ? 'visible' : 'hidden'}}>
+        Next 20
+      </button>
+    </div>
+  </div>
   );
 }
 
