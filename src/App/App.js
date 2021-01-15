@@ -3,6 +3,7 @@ import PokemonList from "../components/PokemonList/PokemonList";
 import styles from "./App.module.scss";
 import axios from "axios";
 import LoadingComponent from "../components/LoadingComponent/LoadingComponent";
+import SearchBar from "../components/SearchBar/SearchBar";
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
@@ -40,20 +41,21 @@ function App() {
 
   return (
   <div className={styles.main}>
-    {loading ? <LoadingComponent/> : null}
-    <PokemonList pokemon={pokemon}/>
+    <SearchBar/>
+    {loading ? <LoadingComponent/>:
+    <PokemonList pokemon={pokemon}/>}
     
     <div className={styles.footer}>
-      <button
-      onClick={gotoPrevPage}
-      style={{visibility: prevPageUrl ? 'visible' : 'hidden'}}>
-      Prev 20
-      </button>
-      
       <button
       onClick={gotoNextPage}
       style={{visibility: nextPageUrl ? 'visible' : 'hidden'}}>
         Next 20
+      </button>
+
+      <button
+      onClick={gotoPrevPage}
+      style={{visibility: prevPageUrl ? 'visible' : 'hidden'}}>
+      Prev 20
       </button>
     </div>
   </div>
